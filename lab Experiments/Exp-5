@@ -1,0 +1,22 @@
+from collections import deque
+
+q = deque([(3,3,0)])
+seen = {(3,3,0)}
+moves = [(1,0),(2,0),(0,1),(0,2),(1,1)]
+
+while q:
+    m,c,b = q.popleft()
+    print(m,c,b)
+    if (m,c,b) == (0,0,1):
+        break
+
+    for x,y in moves:
+        a,d = (m-x,c-y) if b == 0 else (m+x,c+y)
+        boat = 1-b
+
+        if 0 <= a <= 3 and 0 <= d <= 3:
+            if (a == 0 or a >= d) and (3-a == 0 or 3-a >= 3-d):
+                s = (a,d,boat)
+                if s not in seen:
+                    seen.add(s)
+                    q.append(s)

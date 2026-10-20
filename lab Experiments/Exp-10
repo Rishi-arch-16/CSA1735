@@ -1,0 +1,22 @@
+graph = {
+    'A': [('B', 1), ('C', 3)],
+    'B': [('D', 1)],
+    'C': [('D', 1)],
+    'D': []
+}
+
+h = {'A': 2, 'B': 1, 'C': 1, 'D': 0}
+q = [(h['A'], 0, 'A', ['A'])]
+
+while q:
+    f, g, node, path = q.pop(0)
+
+    if node == 'D':
+        print("Path:", path)
+        print("Cost:", g)
+        break
+
+    for nxt, cost in graph[node]:
+        new_g = g + cost
+        q.append((new_g + h[nxt], new_g, nxt, path + [nxt]))
+        q.sort()

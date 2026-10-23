@@ -1,0 +1,19 @@
+colors = ["Red", "Green", "Blue"]
+regions = ["A", "B", "C"]
+neighbors = {"A": ["B", "C"], "B": ["A", "C"], "C": ["A", "B"]}
+result = {}
+
+def solve(i):
+    if i == len(regions):
+        return True
+    r = regions[i]
+    for color in colors:
+        if all(result.get(n) != color for n in neighbors[r]):
+            result[r] = color
+            if solve(i + 1):
+                return True
+            del result[r]
+    return False
+
+solve(0)
+print(result)

@@ -1,0 +1,15 @@
+
+student(raju, s101).
+student(anu, s102).
+
+teacher(tamil, t01).
+teacher(english, t02).
+
+subject(s101, tamil).
+subject(s102, english).
+
+details(Student, Teacher, Code) :-
+    student(Student, SCode),
+    subject(SCode, Sub),
+    teacher(Sub, Teacher),
+    Code = SCode.

@@ -1,0 +1,31 @@
+
+:- dynamic known/1.
+
+initial_fact(seed).
+initial_fact(water).
+initial_fact(sunlight).
+initial_fact(rabbit).
+
+derive(plant_grows) :-
+    known(seed),
+    known(water),
+    known(sunlight).
+
+derive(food_chain) :-
+    known(plant_grows),
+    known(rabbit).
+
+forward_chaining :-
+    retractall(known(_)),
+    forall(initial_fact(F), assertz(known(F))),
+    forward_loop.
+
+forward_loop :-
+    (derive(New),
+     \+ known(New)
+    ->
+     assertz(known(New)),
+     forward_loop
+    ;
+     true
+    ).

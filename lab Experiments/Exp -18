@@ -1,0 +1,5 @@
+X = 10,
+Y = 20,
+Sum is X + Y,
+write('Sum = '),
+write(Sum).

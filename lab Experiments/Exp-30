@@ -1,0 +1,14 @@
+
+sunlight.
+water.
+seed.
+rabbit.
+
+plant_grows :-
+    seed,
+    water,
+    sunlight.
+
+food_chain :-
+    plant_grows,
+    rabbit.

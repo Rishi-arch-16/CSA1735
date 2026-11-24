@@ -1,0 +1,23 @@
+
+vowel(a).
+vowel(e).
+vowel(i).
+vowel(o).
+vowel(u).
+
+count_vowels(Word, Count) :-
+    string_chars(Word, Characters),
+    count_list(Characters, Count).
+
+count_list([], 0).
+
+count_list([H|T], Count) :-
+    downcase_atom(H, Lower),
+    vowel_count(Lower, N),
+    count_list(T, Rest),
+    Count is N + Rest.
+
+vowel_count(X, 1) :-
+    vowel(X), !.
+
+vowel_count(_, 0).

@@ -1,0 +1,14 @@
+
+% Find greatest of three numbers
+
+greatest(X, Y, Z, X) :-
+    X >= Y,
+    X >= Z.
+
+greatest(X, Y, Z, Y) :-
+    Y >= X,
+    Y >= Z.
+
+greatest(X, Y, Z, Z) :-
+    Z >= X,
+    Z >= Y.

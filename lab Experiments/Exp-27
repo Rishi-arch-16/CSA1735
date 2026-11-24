@@ -1,0 +1,12 @@
+
+search([Goal|_], Goal) :-
+    write('Goal Found').
+
+search([Node|Rest], Goal) :-
+    findall(H-Child,
+        (edge(Node, Child), h(Child, H)),
+        Children),
+    append(Rest, Children, New),
+    keysort(New, Sorted),
+    pairs_values(Sorted, Next),
+    search(Next, Goal).

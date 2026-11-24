@@ -1,0 +1,20 @@
+
+% Find the length of a list
+list_length([], 0).
+
+list_length([_|T], N) :-
+    list_length(T, N1),
+    N is N1 + 1.
+
+% Check whether an element exists
+my_member(X, [X|_]).
+
+my_member(X, [_|T]) :-
+    my_member(X, T).
+
+% Find the sum of list elements
+list_sum([], 0).
+
+list_sum([H|T], S) :-
+    list_sum(T, S1),
+    S is H + S1.

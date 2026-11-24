@@ -1,0 +1,13 @@
+
+symptom(raju, fever).
+symptom(raju, cough).
+symptom(anu, fever).
+symptom(anu, chills).
+
+diagnosis(Person, flu) :-
+    symptom(Person, fever),
+    symptom(Person, cough).
+
+diagnosis(Person, malaria) :-
+    symptom(Person, fever),
+    symptom(Person, chills).
